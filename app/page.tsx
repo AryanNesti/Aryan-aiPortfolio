@@ -1,113 +1,258 @@
+"use client";
+import MultiActionAreaCard from "./components/Card"
+import { useCallback } from "react";
+import { useDropzone } from "react-dropzone";
+import { useCompletion } from "ai/react";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import SSSI from '@/public/Images/SSSI.jpg'
+import EMG from '@/public/Images/EMG.png'
+import Article from '@/public/Images/Article_Categorizer.png'
+import Mywebclass from '@/public/Images/MyWebClass.png'
+import CTR from '@/public/Images/click_through_rate.png'
+import { wrap } from "module";
 import Image from "next/image";
+import { useState } from "react";
+
+// Importing SVGs
+import numpy from '@/public/SVGs/numpy-svgrepo-com.svg'
+import pandas from '@/public/SVGs/pandas-svgrepo-com.svg'
+import pytorch from '@/public/SVGs/pytorch-svgrepo-com.svg'
+import tensorflow from '@/public/SVGs/tensorflow-svgrepo-com.svg'
+import Python from '@/public/SVGs/python-svgrepo-com.svg'
+import Angular from '@/public/SVGs/angular-icon-svgrepo-com.svg'
+import AWS from '@/public/SVGs/aws_icon_146074.svg'
+import Cpp from '@/public/SVGs/cpp-svgrepo-com.svg'
+import Csharp from '@/public/SVGs/csharp-svgrepo-com.svg'
+import CSS from '@/public/SVGs/css-3-svgrepo-com.svg'
+import Docker from '@/public/SVGs/docker-svgrepo-com.svg'
+import Firebase from '@/public/SVGs/firebase-svgrepo-com.svg'
+import Git from '@/public/SVGs/git-svgrepo-com.svg'
+import Github from '@/public/SVGs/github-svgrepo-com.svg'
+import HTML from '@/public/SVGs/html-5-svgrepo-com.svg'
+import Java from '@/public/SVGs/java-svgrepo-com.svg'
+import JavaScript from '@/public/SVGs/javascript-svgrepo-com.svg'
+import Kotlin from '@/public/SVGs/kotlin-svgrepo-com.svg'
+import Linux from '@/public/SVGs/linux-svgrepo-com.svg'
+import MailChimp from '@/public/SVGs/mailchimp-svgrepo-com.svg'
+import MongoDB from '@/public/SVGs/mongodb-svgrepo-com.svg'
+import MySQL from '@/public/SVGs/mysql-logo-svgrepo-com.svg'
+import NodeJS from '@/public/SVGs/node-js-svgrepo-com.svg'
+import Oracle from '@/public/SVGs/oracle-svgrepo-com.svg'
+import PHP from '@/public/SVGs/php-svgrepo-com.svg'
+import Reactjs from '@/public/SVGs/react-svgrepo-com.svg'
+import Slack from '@/public/SVGs/slack-svgrepo-com.svg'
+import SQL from '@/public/SVGs/sql-database-generic-svgrepo-com.svg'
+import Swift from '@/public/SVGs/swift-svgrepo-com.svg'
+import TypeScript from '@/public/SVGs/typescript-svgrepo-com.svg'
+import VScode from '@/public/SVGs/vs-code-svgrepo-com.svg'
+import Developer from '@/public/SVGs/undraw_developer_activity_re_39tg.svg'
+import Aryan from '@/public/Images/aryan.png'
+
+
+const responsive = {
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 3,
+    slidesToSlide: 3 // optional, default to 1.
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 2,
+    slidesToSlide: 2 // optional, default to 1.
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+    slidesToSlide: 1 // optional, default to 1.
+  }
+};
 
 export default function Home() {
+  // When a file is dropped in the dropzone, call the `/api/addData` API to train our bot on a new PDF File
+  // const onDrop = useCallback(async (acceptedFiles: File[]) => {
+  //   const file = acceptedFiles[0];
+  //   // document.write(file);
+  //   console.log('====================================');
+  //   console.log(file);
+  //   console.log('====================================');
+
+  //   if (file.type !== "application/pdf") {
+  //     alert("Please upload a PDF");
+  //     return;
+  //   }
+
+  //   const formData = new FormData();
+  //   formData.set("file", file);
+
+  //   const response = await fetch("/api/addData", {
+  //     method: "POST",
+  //     body: formData,
+  //   });
+
+  //   const body = await response.json();
+
+  //   if (body.success) {
+  //     alert("Data added successfully");
+  //   }
+  // }, []);
+
+
+
+  // Configure react-dropzone
+  // const { getRootProps, getInputProps } = useDropzone({
+  //   onDrop,
+  // });
+
+  // Vercel AI hook for generating completions through an AI model
+  const [activeButtonIndex, setActiveButtonIndex] = useState(0);
+  const { completion, input, isLoading, handleInputChange, handleSubmit } =
+    useCompletion({
+      api: "/api/chat",
+    });
+
+  const techstach = [Linux, Docker, Angular, Slack, HTML, CSS, AWS, Github, Git, Firebase, Reactjs, NodeJS, SQL, MySQL, Oracle, PHP, MongoDB, JavaScript, TypeScript, Java, Cpp, Csharp, Python, numpy, pandas, pytorch, tensorflow, Swift, Kotlin, MailChimp]
+  var str = 'Waiting...'
+  function handleClick() {
+    str = 'Thinking...'
+  }
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <>
+      <div
+          className="flex items-center lg:flex-row flex-col-reverse mx-auto justify-center justify-between lg:px-6 xl:py-10 rounded-lg shadow-2xl bg-zinc-800 mt-6"
+          style={{ maxWidth: "1500px", animation: "transitionIn 1s" }}
+        >
+        <main className="flex flex-col p-24 lg:ml-[75px]">
+          {/* <div
+            {...getRootProps({
+              className:
+                "dropzone bg-gray-900 border border-gray-800 p-10 rounded-md hover:bg-gray-800 transition-colors duration-200 ease-in-out cursor-pointer",
+            })}
           >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+            <input {...getInputProps()} />
+            <p>Upload a PDF to add new data</p>
+          </div> */}
+          
+
+          <div className="mx-auto w-full items-center max-w-md flex flex-col stretch">
+            <div className="pb-20 text-center">
+              <h1 className="font-bold text-2xl">Hello, I am Aryan AI</h1>
+              <p>Ask me any questions you have about Aryan Nesti.</p>
+            </div>
+            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+              <input
+                className=" w-full max-w-md text-black border border-gray-300 rounded shadow-xl p-2"
+                value={input}
+                placeholder="Enter your prompt..."
+                onChange={handleInputChange}
+              />
+
+              <button
+                disabled={isLoading}
+                type="submit"
+                onClick={() => setActiveButtonIndex(1)}
+                className="py-2 hover:shadow-[1px_1px_20px_3px_rgba(8,_112,_184,_0.7)] shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-lg bg-emerald-900 text-sm px-6"
+              >
+                Submit
+              </button>
+
+              <p className="text-center">
+                Results: {completion === "" ? str : completion}
+              </p>
+            </form>
+          </div>
+        </main>
+        <div className="lg:mr-[75px]">
+          <Image className={isLoading ? 'animate-[spin_3s_ease-in-out_infinite] w-[500px] border-emerald-800 border-4 rounded-full ' : 'w-[500px] border-emerald-800 border-4 rounded-full'} src={Aryan} alt="Aryan"></Image>
         </div>
       </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+      <div className="mx-auto items-center flex lg:flex-row flex-col-reverse justify-center lg:px-6 xl:py-10 py-6 bg-white rounded-lg lg:shadow-2xl bg-zinc-800  mt-6" style={{ maxWidth: "1500px", animation: "transitionIn 1s" }}>
+        <div className="mx-auto w-full max-w-md flex flex-col stretch space-y-5" style={{ maxWidth: "1500px", animation: "transitionIn 1s" }}>
+          <h1 id='about' className="text-center text-4xl">Who I am</h1>
+          <p style={{width: "65%", alignSelf: "center"}}>Newly Graduated Computer Science Major from New Jersey Institute of Technology, with great aspirations in rapidly growing field of Artificial Intelligence. I am a jack of all trades, where I am a software developer, Data Science and Machine learning Engineer, Full Stack Developer and an App Developer. However, my greatest desire is to be involved in Generative AI as it is taking the world by storm. </p>
+          <p style={{width: "65%", alignSelf: "center"}}>I have worked with programming in several languages ranging from python, C, C++, Java, SQLite, Bash Scripting, Kotlin and Swift. Many of my projects consists of using the scikit-learn library to create models to later predict the outcome. Some of my more recent projects include generative AI in a more user interface with Web development with Node.JS and React or App development with Kotlin. Recently I aspired to be an entrepreneur creating a startup Venture Verse, however with the lack of cofounders we are on hiatus currently.</p>
+          <h1 className="text-center text-4xl">TechStack</h1>
+          <div className="grid grid-rows-4 grid-flow-col " style={{ maxWidth: "1300px", animation: "transitionIn 1s" }}>
+          {techstach.map((stack, i) => {
+            return (
+              <Image src={stack} key={i} alt={stack} className='h-20 w-20 m-2 p-2'></Image>
+            )
+          })}
+          </div>
+        </div>
+        <div className="flex flex-row ">
+          <Image src={Developer} alt="developer" className="w-100 h-100"/>
+        </div>
       </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
+      <div
+          className="flex lg:flex-row flex-col-reverse mx-auto items-center justify-center lg:px-6 xl:py-10 py-6 bg-white rounded-lg lg:shadow-2xl bg-zinc-800 mt-6"
+          style={{ maxWidth: "1500px", animation: "transitionIn 1s" }}
         >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
+          <div className="mx-auto w-full max-w-md flex flex-col stretch"
+          style={{ maxWidth: "1500px", animation: "transitionIn 1s" }}
         >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+          <h1 id='projects' className="text-center text-4xl">Featured Projects</h1>
+          <Carousel
+            additionalTransfrom={0}
+            arrows
+            autoPlaySpeed={3000}
+            centerMode={true}
+            className="p-24"
+            containerClass="container-with-dots"
+            dotListClass=""
+            draggable
+            focusOnSelect={false}
+            infinite
+            itemClass=""
+            keyBoardControl
+            minimumTouchDrag={80}
+            pauseOnHover
+            renderArrowsWhenDisabled={false}
+            renderButtonGroupOutside={false}
+            renderDotsOutside={false}
+            responsive={{
+              desktop: {
+                breakpoint: {
+                  max: 3000,
+                  min: 1024
+                },
+                items: 3,
+                partialVisibilityGutter: 40
+              },
+              mobile: {
+                breakpoint: {
+                  max: 464,
+                  min: 0
+                },
+                items: 1,
+                partialVisibilityGutter: 30
+              },
+              tablet: {
+                breakpoint: {
+                  max: 1024,
+                  min: 464
+                },
+                items: 2,
+                partialVisibilityGutter: 1000
+              }
+            }}
+            rewind={false}
+            rewindWithAnimation={true}
+            rtl={false}
+            shouldResetAutoplay
+            showDots={false}
+            sliderClass=""
+            slidesToSlide={1}
+            swipeable
+          >
+            <div className="justify-center m-5"><MultiActionAreaCard img={SSSI} propA={"Semantic Segmentation of Satellite images"} propB={"This is a Machine Learning Project where we used Neural Networks (NNI) Web UI and allowing us to view the progress of the Unet model that would read Satellite Imagery and determine landmarks ranging from wildlife, buildings, water, roads, and more."} stack={['Python', 'NNI WebUI', 'Unet', 'Git', 'GAN', 'HyperOptimization', 'Knowledge Distilation', 'Level Pruning']} link={'https://github.com/AryanNesti/SSSI/tree/milestone-4'}/></div>
+            <div className="justify-center m-5"><MultiActionAreaCard img={EMG} propA={" Electromyography and Gradient Boosting"} propB={"This Machine Learning Project we coded and used a cosinusoidal dataset and implemented gradient boosting on an EMG dataset to determine the patients movements"} stack={['Python', 'Gradient Boosting', 'scikit-learn', 'Decision Tree', 'NumPy', 'Pandas', ]} link={'https://github.com/AryanNesti/Electromyography-and-Gradient-Boosting'}/></div>
+            <div className="justify-center m-5"><MultiActionAreaCard img={Article} propA={"Article Categorizer"} propB={"This project we compared the Decision Tree Classifier, Random Forrest Classifier, SVM Classifier from the scikit-learn library on Categorizing Articles based on the their content."} stack={['Python', 'Decision Tree', 'SVM', 'RandomForrest', 'Git', 'scikit-learn', 'NumPy', 'Pandas',]} link={'https://github.com/AryanNesti/Article-Categorizer'}/></div>
+            <div className="justify-center m-5"><MultiActionAreaCard img={Mywebclass} propA={"MyWebClass"} propB={"This Web Project is created using Next.js and was made to demonstrate a sales funnel. Some things implemented are MailChimp, GDPR, Google Analytics, Play Write tests, Sanity and more that can be found on the github repository."} stack={['Next.js', 'Javascript', 'Github', 'Sanity', 'Kibana', 'Auth0', 'A/B Testing', ]} link={'https://njit-wis.github.io/project-2-is-219-sea/'}/></div>
+            <div className="justify-center m-5"><MultiActionAreaCard img={CTR} propA={" Click-Through Rate Prediction"} propB={"We predicted the click through rate based on the data provided from the kaggle, in where I wrote the logistic regression solution from scratch for the prediction problem, that can work with Stochastic Gradient Descent (SGD)."} stack={['Python', 'SGD', 'NumPy', 'Pandas', 'Logistic Regression']} link={'https://github.com/AryanNesti/Logistic-Regression'}/></div>
+          </Carousel>
+          </div>
       </div>
-    </main>
+    </>
   );
 }
