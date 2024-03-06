@@ -74,8 +74,8 @@ export default function MultiActionArea({img, propA, propB, stack, link} : {img:
       <ul className='flex flex-wrap'>
         {stack.map((skill: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | React.PromiseLikeOfReactNode | null | undefined, i: any) => {
             return (
-                <li className='mr-1 mt-1'>
-                    <div key={i} className='flex items-center rounded-full bg-zinc-800/50 px-2 py-1 text-[8px] lg:text-[12px] font-medium leading-2 '>{skill}</div>
+                <li className='mr-1 mt-1' key={i}>
+                    <div className='flex items-center rounded-full bg-zinc-800/50 px-2 py-1 text-[8px] lg:text-[12px] font-medium leading-2 '>{skill}</div>
                 </li>
             )
           })}
