@@ -1,5 +1,14 @@
 # Dockerfile
 FROM node:21-alpine
+
+# Set the env variables
+ARG TEST1=value1
+ARG TEST2=value2
+ARG TEST3=value3
+ENV PINECONE_API_KEY=${TEST1}
+ENV PINECONE_INDEX_NAME=${TEST2}
+ENV OPENAI_API_KEY=${TEST3}
+
 # Set the working directory
 WORKDIR /app
 
