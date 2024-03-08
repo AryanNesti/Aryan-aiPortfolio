@@ -14,8 +14,11 @@ const Navbar = () => {
             </Link>
             <ul className="hidden md:flex gap-x-10 text-white">
               <li>
-                <Link href="/ai">
-                  <p>Aryan AI</p>
+                <a href="/AryansResume.pdf" download="AryansResume">Resume</a>
+              </li>
+              <li>
+                <Link href="#experience">
+                  <p>Experience</p>
                 </Link>
               </li>
               <li>

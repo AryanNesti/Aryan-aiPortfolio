@@ -48,6 +48,7 @@ import TypeScript from '@/public/SVGs/typescript-svgrepo-com.svg'
 import VScode from '@/public/SVGs/vs-code-svgrepo-com.svg'
 import Developer from '@/public/SVGs/undraw_developer_activity_re_39tg.svg'
 import Aryan from '@/public/Images/aryan.png'
+import NeuroTechR3 from '@/public/Images/NeuroTechR3.jpeg'
 
 
 const responsive = {
@@ -119,7 +120,7 @@ export default function Home() {
   return (
     <>
       <div
-          className="flex items-center lg:flex-row flex-col-reverse mx-auto justify-center justify-between lg:px-6 xl:py-10 rounded-lg shadow-2xl bg-zinc-800 mt-6"
+          className="flex items-center lg:flex-row flex-col-reverse mx-auto justify-center justify-evenly lg:px-6 xl:py-10 rounded-lg shadow-2xl bg-zinc-800 mt-6"
           style={{ maxWidth: "1500px", animation: "transitionIn 1s" }}
         >
         <main className="flex flex-col p-24 lg:ml-[75px]">
@@ -163,7 +164,7 @@ export default function Home() {
           </div>
         </main>
         <div className="lg:mr-[75px]">
-          <Image className={isLoading ? 'animate-[spin_3s_ease-in-out_infinite] w-[500px] border-emerald-800 border-4 rounded-full ' : 'w-[500px] border-emerald-800 border-4 rounded-full'} src={Aryan} alt="Aryan"></Image>
+          <Image className={isLoading ? 'animate-[spin_3s_ease-in-out_infinite] w-[500px] border-emerald-800 border-4 rounded-full' : 'w-[500px] border-emerald-800 border-4 rounded-full'} src={Aryan} alt="Aryan"></Image>
         </div>
       </div>
       <div className="mx-auto items-center flex lg:flex-row flex-col-reverse justify-center lg:px-6 xl:py-10 py-6 bg-white rounded-lg lg:shadow-2xl bg-zinc-800  mt-6" style={{ maxWidth: "1500px", animation: "transitionIn 1s" }}>
@@ -181,7 +182,38 @@ export default function Home() {
           </div>
         </div>
         <div className="flex flex-row ">
-          <Image src={Developer} alt="developer" className="w-100 h-100"/>
+          <Image src={Developer} alt="developer" className="w-100 h-100 p-10"/>
+        </div>
+      </div>
+      <div className="flex items-center flex-col mx-auto px-6 py-10 rounded-lg shadow-2xl bg-zinc-800 mt-6" style={{ maxWidth: "1500px", animation: "transitionIn 1s" }}>
+        <h1 id="experience" className="text-4xl">Experience</h1>
+        <div className="flex lg:flex-row flex-col items-center justify-evenly md:space-x-10 p-5" style={{ maxWidth: "1500px", animation: "transitionIn 1s" }}>
+          <div className="">
+            <Image src={NeuroTechR3} alt="NeuroTechR3 Inc" className=" rounded-[25px]"/>
+          </div>
+          <div className="space-y-4 bg-emerald-900 rounded p-4 rounded-[25px] place-content-center">
+              <p className="font-bold text-2xl">NeuroTechR3, Inc.</p>
+              <p>NeuroTechR3 develops evidence-based exergame technologies that help clinicians optimize rehabilitation outcomes for individuals with neurological diseases. We provide affordable and engaging solutions for people of all ages, empowering them to enhance their overall wellness and quality of life.</p>
+              <p>Because I signed an NDA I cannot disclose too much information, but what I can mention is that we developed a prototype exergame in which users or patients would control the game mechanicss by</p>
+              <ul className="space-y-3 list-disc list-inside indent-4 text-sm">
+                <li>
+                  Constructed a library on top of Google MediaPipe’s library on hand tracking.
+                </li>
+                <li>
+                  Assisted in implementing a model to recognize medical gestures.
+                </li>
+                <li>
+                  Created a Unity exergame to showcase the model
+                </li>
+                <li>
+                  Reconstructed the model to function on mobile devices.
+                </li>
+                <li>
+                  Coordinated effectively in an Agile team of 5 members
+                </li>
+              </ul>
+              
+          </div>
         </div>
       </div>
       <div
