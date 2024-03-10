@@ -119,6 +119,7 @@ export default function Home() {
   }
   return (
     <>
+      <meta name="google-site-verification" content="lQtdpFIQT0sC8J2vHCLSNBQXb4VNtVAnhJpjfeO-Sh0" />
       <div
           className="flex items-center lg:flex-row flex-col-reverse mx-auto justify-center justify-evenly lg:px-6 xl:py-10 rounded-lg shadow-2xl bg-zinc-800 mt-6"
           style={{ maxWidth: "1500px", animation: "transitionIn 1s" }}
