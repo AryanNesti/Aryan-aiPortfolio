@@ -13,6 +13,7 @@ import CTR from '@/public/Images/click_through_rate.png'
 import { wrap } from "module";
 import Image from "next/image";
 import { useState } from "react";
+import Timeline from './components/Timeline';
 
 // Importing SVGs
 import numpy from '@/public/SVGs/numpy-svgrepo-com.svg'
@@ -189,32 +190,7 @@ export default function Home() {
       <div className="flex items-center flex-col mx-auto px-6 py-10 rounded-lg shadow-2xl bg-zinc-800 mt-6" style={{ maxWidth: "1500px", animation: "transitionIn 1s" }}>
         <h1 id="experience" className="text-4xl">Experience</h1>
         <div className="flex lg:flex-row flex-col items-center justify-evenly md:space-x-10 p-5" style={{ maxWidth: "1500px", animation: "transitionIn 1s" }}>
-          <div className="">
-            <Image src={NeuroTechR3} alt="NeuroTechR3 Inc" className=" rounded-[25px]"/>
-          </div>
-          <div className="space-y-4 bg-emerald-900 rounded p-4 rounded-[25px] place-content-center">
-              <p className="font-bold text-2xl">NeuroTechR3, Inc.</p>
-              <p>NeuroTechR3 develops evidence-based exergame technologies that help clinicians optimize rehabilitation outcomes for individuals with neurological diseases. We provide affordable and engaging solutions for people of all ages, empowering them to enhance their overall wellness and quality of life.</p>
-              <p>Because I signed an NDA I cannot disclose too much information, but what I can mention is that we developed a prototype exergame in which users or patients would control the game mechanicss by</p>
-              <ul className="space-y-3 list-disc list-inside indent-4 text-sm">
-                <li>
-                  Constructed a library on top of Google MediaPipe’s library on hand tracking.
-                </li>
-                <li>
-                  Assisted in implementing a model to recognize medical gestures.
-                </li>
-                <li>
-                  Created a Unity exergame to showcase the model
-                </li>
-                <li>
-                  Reconstructed the model to function on mobile devices.
-                </li>
-                <li>
-                  Coordinated effectively in an Agile team of 5 members
-                </li>
-              </ul>
-              
-          </div>
+          <Timeline></Timeline>
         </div>
       </div>
       <div

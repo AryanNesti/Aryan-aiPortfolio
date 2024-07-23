@@ -14,7 +14,7 @@ const Navbar = () => {
             </Link>
             <ul className="hidden md:flex gap-x-10 text-white">
               <li>
-                <a href="/AryansResume.pdf" download="AryansResume">Resume</a>
+                <a href="/AryanNesti_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
               </li>
               <li>
                 <Link href="#experience">
