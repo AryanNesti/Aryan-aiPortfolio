@@ -13,7 +13,7 @@ import CTR from '@/public/Images/click_through_rate.png'
 import { wrap } from "module";
 import Image from "next/image";
 import { useState } from "react";
-import Timeline from './components/Timeline';
+import CustomizedTimeline  from './components/Timeline'
 
 // Importing SVGs
 import numpy from '@/public/SVGs/numpy-svgrepo-com.svg'
@@ -189,9 +189,7 @@ export default function Home() {
       </div>
       <div className="flex items-center flex-col mx-auto px-6 py-10 rounded-lg shadow-2xl bg-zinc-800 mt-6" style={{ maxWidth: "1500px", animation: "transitionIn 1s" }}>
         <h1 id="experience" className="text-4xl">Experience</h1>
-        <div className="flex lg:flex-row flex-col items-center justify-evenly md:space-x-10 p-5" style={{ maxWidth: "1500px", animation: "transitionIn 1s" }}>
-          <Timeline></Timeline>
-        </div>
+        <CustomizedTimeline></CustomizedTimeline>
       </div>
       <div
           className="flex lg:flex-row flex-col-reverse mx-auto items-center justify-center lg:px-6 xl:py-10 py-6 bg-white rounded-lg lg:shadow-2xl bg-zinc-800 mt-6"

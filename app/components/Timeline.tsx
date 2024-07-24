@@ -38,8 +38,7 @@ export default function CustomizedTimeline() {
           <Typography variant="h6" component="span">
             Software Developer - AI Trainer @ Outlier
           </Typography>
-          <Typography>
-            <ul className="space-y-3 list-disc list-inside indent-4 text-sm">
+            <ul className="space-y-3 list-disc list-outside ml-10 text-sm">
                 <li>
                   Contributed to training cutting-edge generative AI models, enhancing their ability to write efficient and effective code
                 </li>
@@ -53,7 +52,6 @@ export default function CustomizedTimeline() {
                   Played a vital role in improving the performance and capabilities of AI models
                 </li>
             </ul>
-          </Typography>
         </TimelineContent>
       </TimelineItem>
       <TimelineItem>
@@ -73,8 +71,7 @@ export default function CustomizedTimeline() {
           <Typography variant="h6" component="span">
             Application Developer @ Venture Verse
           </Typography>
-          <Typography>
-            <ul className="space-y-3 list-disc list-inside indent-4 text-sm text-justify">
+            <ul className="space-y-3 list-disc list-outside ml-10 text-sm text-justify">
                 <li>
                   Developed an IOS application in script using Xcode studios with a simple backend
                 </li>
@@ -91,7 +88,6 @@ export default function CustomizedTimeline() {
                   Applied scrum methodology to a team of 3 developers
                 </li>
               </ul>
-          </Typography>
         </TimelineContent>
       </TimelineItem>
       <TimelineItem>
@@ -111,8 +107,7 @@ export default function CustomizedTimeline() {
           <Typography variant="h6" component="span">
             Software Engineer @ NeuroTechR3 Inc.
           </Typography>
-          <Typography>
-            <ul className="space-y-3 list-disc list-inside indent-4 text-sm">
+            <ul className="space-y-3 list-disc list-outside ml-10 text-sm">
                 <li>
                   Constructed a library on top of Google MediaPipe’s library on hand tracking.
                 </li>
@@ -129,7 +124,6 @@ export default function CustomizedTimeline() {
                   Coordinated effectively in an Agile team of 5 members
                 </li>
               </ul>
-          </Typography>
         </TimelineContent>
       </TimelineItem>
     </Timeline>
